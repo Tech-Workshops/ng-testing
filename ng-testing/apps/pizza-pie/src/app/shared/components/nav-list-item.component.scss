@@ -1,0 +1,15 @@
+// TODO: Import theme variables
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+}
+
+// TODO: This should be overridden in the theming layout
+.mat-list-item {
+  padding: 1em 2em 0 0;
+  display: flex;
+  width: auto;
+}

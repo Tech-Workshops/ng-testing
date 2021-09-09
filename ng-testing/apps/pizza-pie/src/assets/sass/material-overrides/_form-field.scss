@@ -1,0 +1,402 @@
+
+
+// We use .pizza-pie-app class to override the default angular styling
+.pizza-pie-app {
+  justify-content: space-around;
+}
+
+
+@mixin form-field-alterations($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map-get($theme, is-dark);
+
+  $label-disabled-color: mat-color($foreground, disabled-text);
+  $outline-color: mat-color($foreground, divider, if($is-dark-theme, 0.3, 0.22));
+  $outline-color-hover: mat-color($primary, 300);
+  $outline-color-primary: mat-color($primary, 400);
+  $outline-color-accent: mat-color($accent);
+  $outline-color-warn: mat-color($warn);
+  $outline-color-disabled: mat-color($foreground, divider, if($is-dark-theme, 0.15, 0.06));
+
+  .pizza-pie-app {
+
+
+    .mat-form-field-appearance-outline {
+      .mat-form-field-prefix {
+
+
+        .mat-icon {
+          border-right: solid 1px $outline-color;
+          margin-right: 10px;
+          padding-right: 4px;
+          color: $outline-color-primary;
+        }
+      }
+
+
+      .mat-form-field-outline {
+        color: $outline-color;
+      }
+
+      .mat-form-field-outline-thick {
+        color: $outline-color-hover;
+      }
+
+      &.mat-focused {
+        .mat-form-field-outline-thick {
+          color: $outline-color-primary;
+        }
+
+        &.mat-accent .mat-form-field-outline-thick {
+          color: $outline-color-accent;
+        }
+
+        &.mat-warn .mat-form-field-outline-thick {
+          color: $outline-color-warn;
+        }
+      }
+
+      // Class repeated so that rule is specific enough to override focused accent color case.
+      &.mat-form-field-invalid.mat-form-field-invalid {
+        .mat-form-field-outline-thick {
+          color: $outline-color-warn;
+        }
+      }
+
+      &.mat-form-field-disabled {
+        .mat-form-field-label {
+          color: $label-disabled-color;
+        }
+
+        .mat-form-field-outline {
+          color: $outline-color-disabled;
+        }
+      }
+    }
+  }
+}
+
+@mixin im-form-field-typography($config) {
+  // The unit-less line-height from the font config.
+  $line-height: mat-line-height($config, input);
+  // The amount to scale the font for the floating label and subscript.
+  $subscript-font-scale: 0.75;
+  // The padding above and below the infix.
+  $infix-padding: .5em;
+  // The margin applied to the form-field-infix to reserve space for the floating label.
+  $infix-margin-top: 1em * $line-height * $subscript-font-scale;
+  // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
+  // Mocks show half of the text size, but this margin is applied to an element with the subscript
+  // text font size, so we need to divide by the scale factor to make it half of the original text
+  // size.
+  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
+  // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
+  // need to multiply by the subscript font scale factor since the wrapper has a larger font size.
+  $wrapper-padding-bottom: ($subscript-margin-top + $line-height) * $subscript-font-scale;
+  // The amount we offset the label from the input text in the outline appearance.
+  $outline-appearance-label-offset: -0.25em;
+
+  .mat-form-field-appearance-outline {
+
+    .mat-form-field-prefix {
+      .mat-icon {
+        position:relative;
+        top: 2px;
+
+      }
+
+    }
+    .mat-form-field-infix {
+      padding: $infix-padding 0 0 0;
+    }
+
+    .mat-form-field-label {
+      top: $infix-margin-top + $infix-padding;
+      margin-top: $outline-appearance-label-offset;
+    }
+
+    &.mat-form-field-can-float {
+      &.mat-form-field-should-float .mat-form-field-label,
+      .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        @include _mat-form-field-outline-label-floating(
+                        $subscript-font-scale, $infix-padding + $outline-appearance-label-offset,
+                        $infix-margin-top);
+      }
+
+      // Server-side rendered matInput with a label attribute but label not shown
+      // (used as a pure CSS stand-in for mat-form-field-should-float).
+      .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
+      .mat-form-field-label {
+        @include _mat-form-field-outline-label-floating(
+                        $subscript-font-scale, $infix-padding + $outline-appearance-label-offset,
+                        $infix-margin-top);
+      }
+    }
+  }
+}
+
+
+//DEFAULT ANGULAR BUTTON THEMEING INCLUDED HERE FOR REFERENCE ONLY
+//
+//
+//$_mat-button-ripple-opacity: 0.1;
+//
+//// Applies a focus style to an mat-button element for each of the supported palettes.
+//@mixin _mat-button-focus-overlay-color($theme) {
+//  $primary: map-get($theme, primary);
+//  $accent: map-get($theme, accent);
+//  $warn: map-get($theme, warn);
+//
+//  &.mat-primary .mat-button-focus-overlay {
+//    background-color: mat-color($primary);
+//  }
+//
+//  &.mat-accent .mat-button-focus-overlay {
+//    background-color: mat-color($accent);
+//  }
+//
+//  &.mat-warn .mat-button-focus-overlay {
+//    background-color: mat-color($warn);
+//  }
+//
+//  &[disabled] .mat-button-focus-overlay {
+//    background-color: transparent;
+//  }
+//}
+//
+//// Applies the background color for a ripple. If the value provided is not a Sass color,
+//// we assume that we've been given a CSS variable. Since we can't perform alpha-blending
+//// on a CSS variable, we instead add the opacity directly to the ripple element.
+//@mixin _mat-button-ripple-background($palette, $hue, $opacity) {
+//  $background-color: mat-color($palette, $hue, $opacity);
+//  background-color: $background-color;
+//  @if (type-of($background-color) != color) {
+//    opacity: $opacity;
+//  }
+//}
+//
+//@mixin _mat-button-ripple-color($theme, $hue, $opacity: $_mat-button-ripple-opacity) {
+//  $primary: map-get($theme, primary);
+//  $accent: map-get($theme, accent);
+//  $warn: map-get($theme, warn);
+//
+//  &.mat-primary .mat-ripple-element {
+//    @include _mat-button-ripple-background($primary, $hue, $opacity);
+//  }
+//
+//  &.mat-accent .mat-ripple-element {
+//    @include _mat-button-ripple-background($accent, $hue, $opacity);
+//  }
+//
+//  &.mat-warn .mat-ripple-element {
+//    @include _mat-button-ripple-background($warn, $hue, $opacity);
+//  }
+//}
+//
+//// Applies a property to an mat-button element for each of the supported palettes.
+//@mixin _mat-button-theme-property($theme, $property, $hue) {
+//  $primary: map-get($theme, primary);
+//  $accent: map-get($theme, accent);
+//  $warn: map-get($theme, warn);
+//  $background: map-get($theme, background);
+//  $foreground: map-get($theme, foreground);
+//
+//  &.mat-primary {
+//    #{$property}: mat-color($primary, $hue);
+//  }
+//  &.mat-accent {
+//    #{$property}: mat-color($accent, $hue);
+//  }
+//  &.mat-warn {
+//    #{$property}: mat-color($warn, $hue);
+//  }
+//
+//  &.mat-primary, &.mat-accent, &.mat-warn, &[disabled] {
+//    &[disabled] {
+//      $palette: if($property == 'color', $foreground, $background);
+//      #{$property}: mat-color($palette, disabled-button);
+//    }
+//  }
+//}
+//
+//@mixin mat-button-theme($theme) {
+//  $primary: map-get($theme, primary);
+//  $accent: map-get($theme, accent);
+//  $warn: map-get($theme, warn);
+//  $background: map-get($theme, background);
+//  $foreground: map-get($theme, foreground);
+//
+//  .mat-button, .mat-icon-button, .mat-stroked-button {
+//    // Buttons without a background color should inherit the font color. This is necessary to
+//    // ensure that the button is readable on custom background colors. It's wrong to always assume
+//    // that those buttons are always placed inside of containers with the default background
+//    // color of the theme (e.g. themed toolbars).
+//    color: inherit;
+//    background: transparent;
+//
+//    @include _mat-button-theme-property($theme, 'color', text);
+//    @include _mat-button-focus-overlay-color($theme);
+//
+//    // Setup the ripple color to be based on the text color. This ensures that the ripples
+//    // are matching with the current theme palette and are in contrast to the background color
+//    // (e.g in themed toolbars).
+//    .mat-ripple-element {
+//      opacity: $_mat-button-ripple-opacity;
+//      background-color: currentColor;
+//    }
+//  }
+//
+//  .mat-button-focus-overlay {
+//    background: map_get($foreground, base);
+//  }
+//
+//  // Note: this needs a bit extra specificity, because we're not guaranteed the inclusion
+//  // order of the theme styles and the button reset may end up resetting this as well.
+//  .mat-stroked-button:not([disabled]) {
+//    border-color: mat-color($foreground, divider);
+//  }
+//
+//  .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
+//    // Default font and background color when not using any color palette.
+//    color: mat-color($foreground, text);
+//    background-color: mat-color($background, raised-button);
+//
+//    @include _mat-button-theme-property($theme, 'color', default-contrast);
+//    @include _mat-button-theme-property($theme, 'background-color', default);
+//    @include _mat-button-ripple-color($theme, default-contrast);
+//  }
+//
+//  .mat-stroked-button, .mat-flat-button {
+//    @include _mat-theme-overridable-elevation(0, $theme);
+//  }
+//
+//  .mat-raised-button {
+//    @include _mat-theme-overridable-elevation(2, $theme);
+//
+//    &:not([disabled]):active {
+//      @include _mat-theme-overridable-elevation(8, $theme);
+//    }
+//
+//    &[disabled] {
+//      @include _mat-theme-overridable-elevation(0, $theme);
+//    }
+//  }
+//
+//  .mat-fab, .mat-mini-fab {
+//    @include _mat-theme-overridable-elevation(6, $theme);
+//
+//    &:not([disabled]):active {
+//      @include _mat-theme-overridable-elevation(12, $theme);
+//    }
+//
+//    &[disabled] {
+//      @include _mat-theme-overridable-elevation(0, $theme);
+//    }
+//  }
+//}
+//
+//@mixin mat-button-typography($config) {
+//  .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
+//  .mat-flat-button, .mat-fab, .mat-mini-fab {
+//    font: {
+//      family: mat-font-family($config, button);
+//      size: mat-font-size($config, button);
+//      weight: mat-font-weight($config, button);
+//    }
+//  }
+//}
+//
+//
+//
+//
+//
+//
+//@mixin mat-button-toggle-theme($theme) {
+//  $foreground: map-get($theme, foreground);
+//  $background: map-get($theme, background);
+//  $divider-color: mat-color($foreground, divider);
+//
+//  .mat-button-toggle-standalone,
+//  .mat-button-toggle-group {
+//    @include _mat-theme-elevation(2, $theme);
+//  }
+//
+//  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+//  .mat-button-toggle-group-appearance-standard {
+//    box-shadow: none;
+//  }
+//
+//  .mat-button-toggle {
+//    color: mat-color($foreground, hint-text);
+//
+//    .mat-button-toggle-focus-overlay {
+//      background-color: mat-color($background, focused-button);
+//    }
+//  }
+//
+//  .mat-button-toggle-appearance-standard {
+//    color: mat-color($foreground, text);
+//    background: mat-color($background, card);
+//
+//    .mat-button-toggle-focus-overlay {
+//      background-color: mat-color($background, focused-button, 1);
+//    }
+//  }
+//
+//  .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+//    border-left: solid 1px $divider-color;
+//  }
+//
+//  [dir='rtl'] .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+//    border-left: none;
+//    border-right: solid 1px $divider-color;
+//  }
+//
+//  .mat-button-toggle-group-appearance-standard.mat-button-toggle-vertical {
+//    .mat-button-toggle + .mat-button-toggle {
+//      border-left: none;
+//      border-right: none;
+//      border-top: solid 1px $divider-color;
+//    }
+//  }
+//
+//  .mat-button-toggle-checked {
+//    background-color: mat-color($background, selected-button);
+//    color: mat-color($foreground, secondary-text);
+//
+//    &.mat-button-toggle-appearance-standard {
+//      color: mat-color($foreground, text);
+//    }
+//  }
+//
+//  .mat-button-toggle-disabled {
+//    color: mat-color($foreground, disabled-button);
+//    background-color: mat-color($background, disabled-button-toggle);
+//
+//    &.mat-button-toggle-appearance-standard {
+//      background: mat-color($background, card);
+//    }
+//
+//    &.mat-button-toggle-checked {
+//      background-color: mat-color($background, selected-disabled-button);
+//    }
+//  }
+//
+//  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+//  .mat-button-toggle-group-appearance-standard {
+//    border: solid 1px $divider-color;
+//  }
+//}
+//
+//@mixin mat-button-toggle-typography($config) {
+//  .mat-button-toggle {
+//    font-family: mat-font-family($config);
+//  }
+//}
+//
+
+

@@ -1,0 +1,12 @@
+.pizza-pie-app {
+  .mat-card {
+    margin: 2em 2em 1em 2em;
+
+    .mat-card-content {
+      display: flex;
+      flex-wrap: wrap;
+
+      justify-content: space-between;
+    }
+  }
+}

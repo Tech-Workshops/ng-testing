@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <div class="company-logo"></div>
+  <div class="stats">
+    <div class="stats-one">
+      <div>Orders: {{totalOrderCount}}</div>
+      <div>En Route: {{enRouteCount}}</div>
+      <div>In Kitchen: {{inKitchenCount}}</div>
+      <div>Delivered: {{deliveredCount}}</div>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer mode="side" opened>
+    <app-nav-list-item *ngFor="let item of navItems" [item]="item"></app-nav-list-item>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

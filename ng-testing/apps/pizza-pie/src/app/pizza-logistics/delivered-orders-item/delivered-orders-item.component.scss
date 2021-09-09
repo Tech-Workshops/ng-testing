@@ -1,0 +1,33 @@
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .order-number {
+    flex-basis: 15em;
+  }
+
+  .toppings {
+    flex-basis: 15em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .driver {
+    flex-basis: 15em;
+  }
+
+  .label {
+    border-bottom: 1px solid black;
+    margin-right: 4em;
+    align-self: flex-end;
+  }
+
+  .order-action {
+    margin-left: auto;
+  }
+}

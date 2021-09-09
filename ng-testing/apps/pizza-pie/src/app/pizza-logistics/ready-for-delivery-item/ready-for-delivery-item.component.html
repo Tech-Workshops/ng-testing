@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" class="no-material-margin" (ngSubmit)="assignDriver()" autocomplete="off">
+  <div class="order-details">
+    <span class="order-number label">{{order?.id}}</span>
+    <div class="driver-assignment">
+      <mat-form-field>
+        <mat-select formControlName="driverId">
+          <mat-option *ngFor="let driver of availableDrivers$ | async" [value]="driver.id">{{driver.firstName}} {{driver.lastName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button class="order-action" mat-button type="submit">Assign Driver</button>
+  </div>
+</form>

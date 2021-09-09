@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>
+    Delivered
+  </mat-card-title>
+  <mat-card-content>
+    <div class="order-heading">
+      <span>Order Number</span>
+      <span>Toppings</span>
+      <span>Driver</span>
+    </div>
+    <app-delivered-orders-item *ngFor="let order of orders$ | async" [order]="order">
+    </app-delivered-orders-item>
+  </mat-card-content>
+</mat-card>

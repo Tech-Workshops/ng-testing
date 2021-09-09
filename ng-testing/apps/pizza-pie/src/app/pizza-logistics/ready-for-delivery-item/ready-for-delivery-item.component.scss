@@ -1,0 +1,31 @@
+.order-details {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .order-number {
+    flex-basis: 15em;
+    align-self: center;
+  }
+
+  .driver-assignment {
+    flex-basis: 25em;
+    align-self: flex-end;
+  }
+
+  .label {
+    border-bottom: 1px solid black;
+    margin-right: 4em;
+  }
+
+  .order-action {
+    margin-left: auto;
+  }
+}
+
+.no-material-margin {
+  margin-top: -1.25em;
+  margin-bottom: -1.2em;
+}

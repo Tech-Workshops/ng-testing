@@ -1,0 +1,88 @@
+$im-header-row-height: 40px;
+$im-row-height: 36px;
+
+.pizza-pie-app {
+  mat-cell, mat-footer-cell, mat-header-cell {
+    &.text-right {
+      text-align: right;
+      justify-content: flex-end;
+    }
+
+    &.text-center {
+      justify-content: center;
+    }
+
+    &.text-left {
+      justify-content: flex-start;
+    }
+  }
+
+  mat-header-row {
+    min-height: $im-header-row-height;
+  }
+
+  mat-row, mat-footer-row {
+    min-height: $im-row-height;
+  }
+
+  tr.mat-header-row {
+    height: $im-header-row-height;
+  }
+
+  tr.mat-row, tr.mat-footer-row {
+    height: $im-row-height;
+  }
+}
+
+
+
+@mixin im-table-typography($config) {
+  $font-family-condensed: map-get($config, font-family-condensed);
+  $font-family-condensed: if(type-of($font-family-condensed) == string, unquote($font-family-condensed), $font-family-condensed);
+
+  .pizza-pie-app {
+    .mat-table {
+      font-family: $font-family-condensed;
+    }
+  }
+}
+
+
+
+
+@mixin table-alterations($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+
+  $border-color: mat-color($primary, 500);
+  .pizza-pie-app {
+    .mat-header-row {
+      background-color: mat-color($background, status-bar);
+    }
+
+    .mat-row {
+      border-top: solid 1px transparent;
+
+      &:hover {
+        background-color: mat-color($primary, 100);
+        border-bottom-color: $border-color;
+        font-weight: bold;
+      }
+
+      &:active {
+        background-color: mat-color($primary, 200);
+        border-bottom-color: $border-color;
+        font-weight: bold;
+      }
+    }
+
+    mat-row, mat-header-row, mat-footer-row,
+    th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+      border-bottom-color: $border-color;
+    }
+  }
+}

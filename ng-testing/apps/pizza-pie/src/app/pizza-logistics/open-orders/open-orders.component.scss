@@ -1,0 +1,21 @@
+app-open-orders-item {
+  flex: 1 100%;
+}
+
+app-open-orders:not(:first-child) {
+  margin-top: 1em;
+}
+
+.order-heading {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+
+  span {
+    flex-basis: 14.5em;
+    font-weight: bolder;
+    font-size: large;
+  }
+}

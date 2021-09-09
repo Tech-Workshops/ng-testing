@@ -1,0 +1,21 @@
+app-ready-for-delivery-item {
+  flex: 1 100%;
+}
+
+app-ready-for-delivery-item:not(:first-child) {
+  margin-top: 1em;
+}
+
+.order-heading {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+
+  span {
+    flex-basis: 15em;
+    font-weight: bolder;
+    font-size: large;
+  }
+}

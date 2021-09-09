@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitOrder()" autocomplete="off">
+  <mat-card class="mat-elevation-z2">
+    <mat-card-title class="card-title">
+      New Order
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Customer Name" formControlName="customerName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Toppings</mat-label>
+        <mat-select formControlName="toppings" multiple>
+          <mat-option *ngFor="let topping of toppings$ | async" [value]="topping.id">{{topping.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Size</mat-label>
+        <mat-select formControlName="size">
+          <mat-option *ngFor="let size of sizes" [value]="size.id">{{size.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit" mat-button class="place-order">Place Order</button>
+    </mat-card-content>
+  </mat-card>
+</form>

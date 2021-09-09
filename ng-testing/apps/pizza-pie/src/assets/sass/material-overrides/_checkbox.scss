@@ -1,0 +1,153 @@
+$im-checkbox-size: 20px;
+
+// Manual calculation done on SVG
+$_mat-checkbox-mark-path-length: 22.910259;
+$_mat-checkbox-mark-stroke-size: 2 / 15 * $im-checkbox-size !default;
+
+// We use .pizza-pie-app class to override the default angular styling
+.pizza-pie-app {
+  .mat-checkbox-inner-container {
+    height: $im-checkbox-size;
+    width: $im-checkbox-size;
+  }
+
+  .mat-checkbox {
+    .mat-checkbox-frame {
+      border-radius: $im-checkbox-size;
+      border-width: 1px;
+    }
+
+    .mat-checkbox-background {
+      border-radius: $im-checkbox-size;
+      overflow: hidden;
+    }
+  }
+}
+
+@mixin checkbox-alterations($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+
+  // The color of the checkbox's checkmark / mixedmark.
+  $checkbox-mark-color: mat-color($primary, default);
+  $checkbox-border-color: mat-color($background, foreground);
+  $checkbox-background-color: transparent;
+
+  $white-30pct-opacity-on-dark: #686868;
+  $black-26pct-opacity-on-light: #b0b0b0;
+  $disabled-color: if($is-dark-theme, $white-30pct-opacity-on-dark, $black-26pct-opacity-on-light);
+  .pizza-pie-app {
+
+    .mat-checkbox-frame {
+      border-color: $checkbox-border-color;
+    }
+
+    .mat-checkbox-checkmark {
+      fill: $checkbox-mark-color;
+    }
+
+    .mat-checkbox-checkmark-path {
+      // !important is needed here because a stroke must be set as an
+      // attribute on the SVG in order for line animation to work properly.
+      stroke: $checkbox-mark-color !important;
+
+      @include cdk-high-contrast(black-on-white) {
+        // Having the one above be !important ends up overriding the browser's automatic
+        // color inversion so we need to re-invert it ourselves for black-on-white.
+        stroke: #000 !important;
+      }
+    }
+
+    .mat-checkbox-mixedmark {
+      background-color: $checkbox-mark-color;
+    }
+
+    .mat-checkbox-indeterminate, .mat-checkbox-checked {
+      &.mat-primary .mat-checkbox-background {
+        background-color: $checkbox-background-color;
+      }
+
+      &.mat-accent .mat-checkbox-background {
+        background-color: $checkbox-background-color;
+      }
+
+      &.mat-warn .mat-checkbox-background {
+        background-color: $checkbox-background-color;
+      }
+    }
+
+    .mat-checkbox-disabled {
+      .mat-checkbox-background {
+        background-color: $disabled-color;
+      }
+
+      &.mat-checkbox-checked,
+      &.mat-checkbox-indeterminate {
+        .mat-checkbox-background {
+          background-color: $disabled-color;
+        }
+      }
+
+      .mat-checkbox-checkmark-path {
+        // !important is needed here because a stroke must be set as an
+        // attribute on the SVG in order for line animation to work properly.
+        stroke: darken($disabled-color, 20%) !important;
+      }
+
+      &:not(.mat-checkbox-checked) {
+        .mat-checkbox-frame {
+          border-color: $disabled-color;
+        }
+      }
+
+      .mat-checkbox-label {
+        color: mat-color($foreground, secondary-text);
+      }
+
+      @include cdk-high-contrast {
+        opacity: 0.5;
+      }
+    }
+
+    // This one is moved down here so it can target both
+    // the theme colors and the disabled state.
+    @include cdk-high-contrast {
+      .mat-checkbox-background {
+        // Needs to be removed because it hides the checkbox outline.
+        background: none;
+      }
+    }
+
+    // Switch this to a solid color since we're using `opacity`
+    // to control how opaque the ripple should be.
+    .mat-checkbox .mat-ripple-element {
+      background-color: map_get(map-get($theme, foreground), base);
+    }
+
+    .mat-checkbox-checked:not(.mat-checkbox-disabled),
+    .mat-checkbox:active:not(.mat-checkbox-disabled) {
+      &.mat-primary .mat-ripple-element {
+        background: mat-color($primary);
+      }
+
+      &.mat-accent .mat-ripple-element {
+        background: mat-color($accent);
+      }
+
+      &.mat-warn .mat-ripple-element {
+        background: mat-color($warn);
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+$im-button-height: 35px;
+$im-button-horizontal-padding: 25px;
+$mat-button-border-radius: 20px !default;
+
+// We use .pizza-pie-app class to override the default angular styling
+.pizza-pie-app {
+  .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+    height: $im-button-height;
+    padding: 0 $im-button-horizontal-padding 0 $im-button-horizontal-padding;
+  }
+
+  .mat-button {
+    text-transform: uppercase;
+
+    .mat-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+@mixin button-theme-alteration($theme, $palette-name) {
+  $palette: map-get($theme, $palette-name);
+
+  $default-color: mat-color($palette, default);
+  $hover-color: mat-color($palette, 500);
+  $active-color: mat-color($palette, 700);
+
+
+    .mat-#{$palette-name} {
+      &.mat-button, &.mat-flat-button, &.mat-icon-button {
+
+        &:hover {
+          background-color: $hover-color;
+        }
+        &:active {
+          background-color: $active-color;
+        }
+      }
+
+      &.mat-stroked-button:not([disabled]) {
+        border-color: $default-color;
+
+        &:hover {
+          border-color: $hover-color;
+          color: $hover-color;
+        }
+        &:active {
+          border-color: $active-color;
+          color: $active-color;
+        }
+
+      }
+    }
+
+}
+
+@mixin button-alterations($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  $hover-color: mat-color($primary, 500);
+  $active-color: mat-color($primary, 700);
+
+  .pizza-pie-app {
+    @include button-theme-alteration($theme, 'primary');
+    @include button-theme-alteration($theme, 'accent');
+
+    .mat-button:not([disabled]) {
+      color: mat-color($primary, A100);
+
+      &:hover {
+        color: $hover-color;
+      }
+      &:active {
+        color: $active-color;
+      }
+
+      .mat-button-focus-overlay {
+
+        background-color: transparent;
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>
+    Ready for Delivery
+  </mat-card-title>
+  <mat-card-content>
+    <div class="order-heading">
+      <span>Order Number</span>
+      <span>Driver</span>
+    </div>
+    <app-ready-for-delivery-item *ngFor="let pizzaOrder of orders$ | async" [order]="pizzaOrder"
+                                 [availableDrivers$]="availableDrivers$">
+    </app-ready-for-delivery-item>
+  </mat-card-content>
+</mat-card>

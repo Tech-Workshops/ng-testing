@@ -1,0 +1,99 @@
+$im-palette-blue: (
+        50 : #f6fafc,
+        //Lighter
+        100 : #edf4fa,
+        200 : #d1e3f1,
+        300 : #afcfe7,
+        400 : #82b3d9,
+
+        //button hover
+        500 : #5498cb,
+
+        //default
+        600 : #1b75ba,
+
+        //button pressed
+        700 : #14588b,
+
+        //Darker
+        800 : #104670,
+        A100 : #767676, //Alternate default, basic button primary background
+        A200 : #8eb9ff,
+        A400 : #5b9aff,
+        A700 : #418aff,
+
+
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #000000,
+                400 : #000000,
+                500 : #ffffff,
+
+                //contrast-default
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000,
+        )
+);
+
+$im-palette-grey: (
+        50 : #fafafa, //background
+
+        //Lighter
+        100 : #f4f4f4, //app-bar
+        200 : #EDEDED, //status-bar, data-table header background, disabled-button-toggle, disabled-list-option
+        300 : #D9D9D9, //selected-button, unselected-chip
+        400 : #CCCCCC, //selected-disabled-button
+
+        //Button Hover
+        500 : #AAAAAA,
+
+        //Default
+        600 : #767676,
+
+        //Button Pressed
+        700 : #474747,
+
+        //Darker
+        800 : #333333,
+
+        A100 : #e1e1e1,
+        A200 : #cccccc,
+        A400 : #aaaaaa,
+        A700 : #777777,
+
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #000000,
+                400 : #000000,
+
+                500 : #ffffff,
+                //contrast-default
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000,
+        )
+);
+
+$im-theme-background: (
+        button: map_get($im-palette-blue, 600),
+        focused-button: map_get($im-palette-blue, 300),
+        selected-button: map_get($im-palette-blue, 400)
+);
+
+$im-theme-foreground: (
+);

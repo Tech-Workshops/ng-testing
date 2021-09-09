@@ -1,0 +1,21 @@
+app-delivered-orders-item {
+  flex: 1 100%;
+}
+
+app-delivered-orders-item:not(:first-child) {
+  margin-top: 1em;
+}
+
+.order-heading {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+
+  span {
+    flex-basis: 15em;
+    font-weight: bolder;
+    font-size: large;
+  }
+}
