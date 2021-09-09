@@ -10,8 +10,8 @@ import { PizzaTopping } from '../../shared/models/pizza.topping';
   styleUrls: ['./open-orders-item.component.scss']
 })
 export class OpenOrdersItemComponent {
-  @Input() order!: PizzaOrder;
-  @Input() toppings!: PizzaTopping[];
+  @Input() order: PizzaOrder;
+  @Input() toppings: PizzaTopping[];
 
   private subscriptions = new Subscription();
 
