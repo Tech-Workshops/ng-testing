@@ -1,4 +1,4 @@
 export enum DriverState {
-  ready,
-  enRoute
+  Ready,
+  EnRoute
 }

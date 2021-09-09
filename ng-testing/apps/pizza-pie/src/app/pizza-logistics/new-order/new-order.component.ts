@@ -13,10 +13,10 @@ import { PizzaTopping } from '../../shared/models/pizza.topping';
   styleUrls: ['./new-order.component.scss']
 })
 export class NewOrderComponent implements OnInit, OnDestroy {
-  @Input() toppings$: Observable<PizzaTopping[]>;
-  @Input() sizes$: Observable<PizzaSize[]>;
+  @Input() toppings$!: Observable<PizzaTopping[]>;
+  @Input() sizes$!: Observable<PizzaSize[]>;
 
-  public formGroup: FormGroup;
+  public formGroup!: FormGroup;
   public sizes: PizzaSize[] = [];
   public pizzaToppings: PizzaTopping[] = [];
 
@@ -40,8 +40,7 @@ export class NewOrderComponent implements OnInit, OnDestroy {
   }
 
   public submitOrder() {
-    let pizzaOrder: PizzaOrder;
-    pizzaOrder = { ...this.formGroup.value };
+    const pizzaOrder: PizzaOrder = { ...this.formGroup.value };
 
     this.pizzaLogisticsService.createNewOrder(pizzaOrder);
     this.formGroup.reset();

@@ -1,8 +1,8 @@
 export enum PizzaState {
-  open,
-  preparing,
-  cooking,
-  ready,
-  enRoute,
-  delivered
+  Open,
+  Preparing,
+  Cooking,
+  Ready,
+  EnRoute,
+  Delivered
 }

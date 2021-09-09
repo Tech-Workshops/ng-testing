@@ -9,10 +9,7 @@ import { PizzaOrder } from '../../shared/models/pizza-order.model';
   styleUrls: ['./delivered-orders.component.scss']
 })
 export class DeliveredOrdersComponent {
-  @Input() orders$: Observable<PizzaOrder[]>;
+  @Input() orders$!: Observable<PizzaOrder[]>;
 
   private subscriptions = new Subscription();
-
-  constructor() {
-  }
 }

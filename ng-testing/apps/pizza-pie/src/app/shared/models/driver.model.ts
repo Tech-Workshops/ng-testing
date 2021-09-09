@@ -1,8 +1,8 @@
 import { DriverState } from '../enums/driver-state.enum';
 
 export class Driver {
-  id: string;
-  firstName: string;
-  lastName: string;
-  state: DriverState;
+  public id = '';
+  public firstName = '';
+  public lastName = '';
+  public state: DriverState = DriverState.Ready;
 }

@@ -10,8 +10,8 @@ import { PizzaTopping } from '../../shared/models/pizza.topping';
   styleUrls: ['./open-orders.component.scss']
 })
 export class OpenOrdersComponent {
-  @Input() orders$: Observable<PizzaOrder[]>;
-  @Input() toppings$: Observable<PizzaTopping[]>;
+  @Input() orders$!: Observable<PizzaOrder[]>;
+  @Input() toppings$!: Observable<PizzaTopping[]>;
 
   constructor() {
   }

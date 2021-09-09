@@ -58,52 +58,13 @@ export class PizzaLogisticsComponent implements OnInit, OnDestroy {
     return this.allDrivers$;
   }
 
-  ////////////////////////////////////
-  // Demo code
-  ////////////////////////////////////
-  public loadOrders(): void {
-    const pizzaOrders = [{
-        customerName: 'a',
-        toppings: [1, 2, 3],
-        size: 2
-      }, {
-        customerName: 'a',
-        toppings: [1, 2, 3],
-        size: 2
-      }, {
-        customerName: 'b',
-        toppings: [],
-        size: 2
-      }, {
-        customerName: 'c',
-        toppings: [2, 4, 5],
-        size: 2
-      }, {
-        customerName: 'd',
-        toppings: [1, 2, 3],
-        size: 2
-      }, {
-        customerName: 'e',
-        toppings: [1, 2, 3, 4, 5],
-        size: 2
-      },{
-        customerName: 'f',
-        toppings: [ 1, 2, 3],
-        size: 2
-      }];
-
-    pizzaOrders.forEach(x => {
-      this.pizzaLogisticsService.createNewOrder(x as PizzaOrder);
-    });
-  }
-
   private subscribeOrders(): void {
     this.subscriptions.add(this.pizzaLogisticsService.getOrders().subscribe(
       data => {
         if (data) {
-          const openPizzaOrders = data.filter(x => x.state === PizzaState.open);
-          const readyPizzaOrders = data.filter(x => x.state === PizzaState.ready);
-          const deliveredPizzaOrders = data.filter(x => x.state === PizzaState.delivered);
+          const openPizzaOrders = data.filter(x => x.state === PizzaState.Open);
+          const readyPizzaOrders = data.filter(x => x.state === PizzaState.Ready);
+          const deliveredPizzaOrders = data.filter(x => x.state === PizzaState.Delivered);
 
           this.openPizzaOrders$.next(openPizzaOrders);
           this.readyPizzaOrders$.next(readyPizzaOrders);
@@ -124,7 +85,7 @@ export class PizzaLogisticsComponent implements OnInit, OnDestroy {
   private subscribeDrivers(): void {
     this.subscriptions.add(this.pizzaLogisticsService.getDrivers().subscribe(
       data => {
-          const availableDrivers = data.filter(x => x.state === DriverState.ready);
+          const availableDrivers = data.filter(x => x.state === DriverState.Ready);
           this.availableDrivers$.next(availableDrivers);
           this.allDrivers$.next(data);
       },

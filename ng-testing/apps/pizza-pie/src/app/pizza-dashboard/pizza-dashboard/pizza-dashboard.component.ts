@@ -19,10 +19,10 @@ export class PizzaDashboardComponent implements OnInit, OnDestroy {
     }
   ];
 
-  public totalOrderCount: number;
-  public enRouteCount: number;
-  public inKitchenCount: number;
-  public deliveredCount: number;
+  public totalOrderCount = 0;
+  public enRouteCount = 0;
+  public inKitchenCount = 0;
+  public deliveredCount = 0;
 
   constructor(private pizzaLogisticsService: PizzaLogisticsService) { }
 
@@ -38,9 +38,9 @@ export class PizzaDashboardComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.pizzaLogisticsService.getOrders().subscribe(
       data => {
         this.totalOrderCount = data.length || 0;
-        this.enRouteCount = data.filter(x => x.state === PizzaState.enRoute).length || 0;
-        this.inKitchenCount = data.filter(x => x.state === PizzaState.cooking).length || 0;
-        this.deliveredCount = data.filter(x => x.state === PizzaState.delivered).length || 0;
+        this.enRouteCount = data.filter(x => x.state === PizzaState.EnRoute).length || 0;
+        this.inKitchenCount = data.filter(x => x.state === PizzaState.Cooking).length || 0;
+        this.deliveredCount = data.filter(x => x.state === PizzaState.Delivered).length || 0;
       },
       error => console.log(error)
     ));

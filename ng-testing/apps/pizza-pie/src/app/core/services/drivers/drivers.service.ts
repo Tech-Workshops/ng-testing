@@ -18,7 +18,7 @@ export class DriversService {
   }
 
   public updateDriverState(driver: Driver, state: DriverState): void {
-    if (driver.state !== state) {
+    if (driver?.state !== state) {
       driver.state = state;
       this.httpClient.put(this.uri, driver);
     }

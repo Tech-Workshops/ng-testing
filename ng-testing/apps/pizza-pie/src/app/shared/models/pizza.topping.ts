@@ -1,5 +1,5 @@
 export class PizzaTopping {
-  id: number;
-  name: string;
-  time: number;
+  public id = -1;
+  public name = '';
+  public time = 0;
 }

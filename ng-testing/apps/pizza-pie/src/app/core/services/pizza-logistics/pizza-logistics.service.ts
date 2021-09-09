@@ -33,7 +33,7 @@ export class PizzaLogisticsService {
   }
 
   public createNewOrder(order: PizzaOrder): void {
-    order.state = PizzaState.open;
+    order.state = PizzaState.Open;
     this.ordersService.placeOrder(order).subscribe(
       data => this.updateOrders(data),
       error => console.log(error)
@@ -68,7 +68,7 @@ export class PizzaLogisticsService {
     return this.drivers$;
   }
 
-  public getDriverById(id: string): Driver {
+  public getDriverById(id: string): Driver | undefined{
     return this.drivers.find(x => x.id === id);
   }
 
@@ -86,7 +86,7 @@ export class PizzaLogisticsService {
     return this.toppings$;
   }
 
-  public getToppingById(id: number): PizzaTopping {
+  public getToppingById(id: number): PizzaTopping | undefined {
     return this.toppings.find(x => x.id === id);
   }
 
@@ -126,6 +126,11 @@ export class PizzaLogisticsService {
 
   private setDriverState(driverId: string, state: DriverState): void {
     const driver = this.drivers.find(x => x.id === driverId);
+
+    if (!driver) {
+      return;
+    }
+
     driver.state = state;
     this.driversService.updateDriverState(driver, state);
     this.drivers$.next(this.drivers);
@@ -133,6 +138,11 @@ export class PizzaLogisticsService {
 
   private setOrderState(pizzaOrder: PizzaOrder, state: PizzaState): void {
     const pizzaOrderInArray = this.orders.find(x => x.id === pizzaOrder.id);
+
+    if (!pizzaOrderInArray) {
+      return;
+    }
+
     pizzaOrderInArray.state = state;
 
     this.ordersService.updateOrder(pizzaOrderInArray);
@@ -146,29 +156,29 @@ export class PizzaLogisticsService {
     if (pizzaOrder.toppings.length > 0) {
         toppingsCookingTime =
           pizzaOrder.toppings.reduce((sum, current) => {
-            return sum + this.getTopping(current).time;
+            return sum + (this.getTopping(current)?.time || 0);
           });
     }
 
-    this.setOrderState(pizzaOrder, PizzaState.cooking);
+    this.setOrderState(pizzaOrder, PizzaState.Cooking);
 
     setTimeout(() => {
-      this.setOrderState(pizzaOrder, PizzaState.ready);
+      this.setOrderState(pizzaOrder, PizzaState.Ready);
     }, (baseCookingTime + toppingsCookingTime) * 1000);
   }
 
   private deliverPizza(pizzaOrder: PizzaOrder, driverId: string): void {
-    this.setDriverState(driverId, DriverState.enRoute);
+    this.setDriverState(driverId, DriverState.EnRoute);
     pizzaOrder.driverId = driverId;
-    this.setOrderState(pizzaOrder, PizzaState.enRoute);
+    this.setOrderState(pizzaOrder, PizzaState.EnRoute);
 
     setTimeout(() => {
-      this.setOrderState(pizzaOrder, PizzaState.delivered);
-      this.setDriverState(driverId, DriverState.ready);
+      this.setOrderState(pizzaOrder, PizzaState.Delivered);
+      this.setDriverState(driverId, DriverState.Ready);
     }, 15000);
   }
 
-  private getTopping(id: number): PizzaTopping {
+  private getTopping(id: number): PizzaTopping | undefined {
     return this.toppings.find(x => x.id === id);
   }
 }

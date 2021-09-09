@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/pizza-pie",
       "sourceRoot": "apps/pizza-pie/src",
-      "prefix": "ng-testing",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -52,10 +52,16 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/pizza-pie/src/environments/environment.ts",
+                  "with": "apps/pizza-pie/src/environments/environment.hmr.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

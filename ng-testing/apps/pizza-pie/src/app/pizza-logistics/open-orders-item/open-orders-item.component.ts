@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PizzaLogisticsService } from '../../core/services/pizza-logistics/pizza-logistics.service';
 import { PizzaOrder } from '../../shared/models/pizza-order.model';
 import { PizzaTopping } from '../../shared/models/pizza.topping';
@@ -10,8 +10,8 @@ import { PizzaTopping } from '../../shared/models/pizza.topping';
   styleUrls: ['./open-orders-item.component.scss']
 })
 export class OpenOrdersItemComponent {
-  @Input() order: PizzaOrder;
-  @Input() toppings: PizzaTopping[];
+  @Input() order!: PizzaOrder;
+  @Input() toppings!: PizzaTopping[];
 
   private subscriptions = new Subscription();
 
@@ -42,7 +42,9 @@ export class OpenOrdersItemComponent {
 
   private getToppingName(id: number): string {
     const topping = this.toppings.find(x => x.id === id);
-    return topping.name;
+    return topping !== undefined
+      ? topping.name
+      : '';
   }
 }
 

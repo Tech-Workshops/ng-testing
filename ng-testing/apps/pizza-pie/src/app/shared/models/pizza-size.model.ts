@@ -1,4 +1,4 @@
 export class PizzaSize {
-  id: string;
-  name: string;
+  public id = '';
+  public name = '';
 }

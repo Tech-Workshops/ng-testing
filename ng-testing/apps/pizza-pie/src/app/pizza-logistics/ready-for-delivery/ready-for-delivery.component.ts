@@ -9,8 +9,8 @@ import { PizzaOrder } from '../../shared/models/pizza-order.model';
   styleUrls: ['./ready-for-delivery.component.scss']
 })
 export class ReadyForDeliveryComponent {
-  @Input() orders$: Observable<PizzaOrder[]>;
-  @Input() availableDrivers$: Observable<Driver[]>;
+  @Input() orders$!: Observable<PizzaOrder[]>;
+  @Input() availableDrivers$!: Observable<Driver[]>;
 
   constructor() {
   }
