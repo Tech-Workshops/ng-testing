@@ -1,8 +1,10 @@
 $im-checkbox-size: 20px;
 
+@use "sass:math";
+
 // Manual calculation done on SVG
 $_mat-checkbox-mark-path-length: 22.910259;
-$_mat-checkbox-mark-stroke-size: 2 / 15 * $im-checkbox-size !default;
+$_mat-checkbox-mark-stroke-size: math.div(2, 15) * $im-checkbox-size !default;
 
 // We use .pizza-pie-app class to override the default angular styling
 .pizza-pie-app {

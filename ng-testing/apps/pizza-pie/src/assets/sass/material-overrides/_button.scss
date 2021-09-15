@@ -21,9 +21,9 @@ $mat-button-border-radius: 20px !default;
 @mixin button-theme-alteration($theme, $palette-name) {
   $palette: map-get($theme, $palette-name);
 
-  $default-color: mat-color($palette, default);
-  $hover-color: mat-color($palette, 500);
-  $active-color: mat-color($palette, 700);
+  //$default-color: mat-color($palette, default);
+  //$hover-color: mat-color($palette, 500);
+  //$active-color: mat-color($palette, 700);
 
 
     .mat-#{$palette-name} {
@@ -61,22 +61,22 @@ $mat-button-border-radius: 20px !default;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  $hover-color: mat-color($primary, 500);
-  $active-color: mat-color($primary, 700);
+  //$hover-color: mat-color($primary, 500);
+  //$active-color: mat-color($primary, 700);
 
   .pizza-pie-app {
     @include button-theme-alteration($theme, 'primary');
     @include button-theme-alteration($theme, 'accent');
 
     .mat-button:not([disabled]) {
-      color: mat-color($primary, A100);
+      color: rgba($primary, A100);
 
-      &:hover {
-        color: $hover-color;
-      }
-      &:active {
-        color: $active-color;
-      }
+      //&:hover {
+      //  color: $hover-color;
+      //}
+      //&:active {
+      //  color: $active-color;
+      //}
 
       .mat-button-focus-overlay {
 

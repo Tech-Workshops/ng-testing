@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { PizzaLogisticsService } from '../../core/services/pizza-logistics/pizza-logistics.service';
+import { Observable } from 'rxjs';
 import { PizzaOrder } from '../../shared/models/pizza-order.model';
 import { PizzaTopping } from '../../shared/models/pizza.topping';
 
@@ -10,9 +9,6 @@ import { PizzaTopping } from '../../shared/models/pizza.topping';
   styleUrls: ['./open-orders.component.scss']
 })
 export class OpenOrdersComponent {
-  @Input() orders$!: Observable<PizzaOrder[]>;
-  @Input() toppings$!: Observable<PizzaTopping[]>;
-
-  constructor() {
-  }
+  @Input() orders$: Observable<PizzaOrder[]>;
+  @Input() toppings$: Observable<PizzaTopping[]>;
 }

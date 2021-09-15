@@ -11,21 +11,17 @@ if (environment.production) {
 }
 
 const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule,{
-    defaultEncapsulation: ViewEncapsulation.ShadowDom
+  defaultEncapsulation: ViewEncapsulation.ShadowDom
 });
 
-
-
- if (environment.hmr) {
-    // @ts-ignore
-   if (module['hot']) {
-        hmrBootstrap(module, bootstrap);
-    } else {
-        console.error('HMR is not enabled for webpack-dev-server!');
-        console.log('Are you using the --hmr flag for ng serve?');
-    }
- } else {
-     bootstrap().catch(err => console.log(err));
- }
+if (environment.hmr === true) {
+  if (module['hot']) {
+    hmrBootstrap(module, bootstrap);
+  } else {
+    bootstrap().catch((err) => console.log(err));
+  }
+} else {
+  bootstrap().catch((err) => console.log(err));
+}
 
 

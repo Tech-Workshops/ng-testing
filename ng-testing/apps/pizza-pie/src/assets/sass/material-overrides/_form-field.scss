@@ -13,81 +13,79 @@
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  $label-disabled-color: mat-color($foreground, disabled-text);
-  $outline-color: mat-color($foreground, divider, if($is-dark-theme, 0.3, 0.22));
-  $outline-color-hover: mat-color($primary, 300);
-  $outline-color-primary: mat-color($primary, 400);
-  $outline-color-accent: mat-color($accent);
-  $outline-color-warn: mat-color($warn);
-  $outline-color-disabled: mat-color($foreground, divider, if($is-dark-theme, 0.15, 0.06));
+  //$label-disabled-color: mat-color($foreground, disabled-text);
+  //$outline-color: mat-color($foreground, divider, if($is-dark-theme, 0.3, 0.22));
+  //$outline-color-hover: mat-color($primary, 300);
+  //$outline-color-primary: mat-color($primary, 400);
+  //$outline-color-accent: mat-color($accent);
+  //$outline-color-warn: mat-color($warn);
+  //$outline-color-disabled: mat-color($foreground, divider, if($is-dark-theme, 0.15, 0.06));
 
   .pizza-pie-app {
 
 
     .mat-form-field-appearance-outline {
       .mat-form-field-prefix {
-
-
-        .mat-icon {
-          border-right: solid 1px $outline-color;
-          margin-right: 10px;
-          padding-right: 4px;
-          color: $outline-color-primary;
-        }
+        //.mat-icon {
+        //  border-right: solid 1px $outline-color;
+        //  margin-right: 10px;
+        //  padding-right: 4px;
+        //  color: $outline-color-primary;
+        //}
       }
 
 
-      .mat-form-field-outline {
-        color: $outline-color;
-      }
-
-      .mat-form-field-outline-thick {
-        color: $outline-color-hover;
-      }
-
-      &.mat-focused {
-        .mat-form-field-outline-thick {
-          color: $outline-color-primary;
-        }
-
-        &.mat-accent .mat-form-field-outline-thick {
-          color: $outline-color-accent;
-        }
-
-        &.mat-warn .mat-form-field-outline-thick {
-          color: $outline-color-warn;
-        }
-      }
-
-      // Class repeated so that rule is specific enough to override focused accent color case.
-      &.mat-form-field-invalid.mat-form-field-invalid {
-        .mat-form-field-outline-thick {
-          color: $outline-color-warn;
-        }
-      }
-
-      &.mat-form-field-disabled {
-        .mat-form-field-label {
-          color: $label-disabled-color;
-        }
-
-        .mat-form-field-outline {
-          color: $outline-color-disabled;
-        }
-      }
+    //  .mat-form-field-outline {
+    //    color: $outline-color;
+    //  }
+    //
+    //  .mat-form-field-outline-thick {
+    //    color: $outline-color-hover;
+    //  }
+    //
+    //  &.mat-focused {
+    //    .mat-form-field-outline-thick {
+    //      color: $outline-color-primary;
+    //    }
+    //
+    //    &.mat-accent .mat-form-field-outline-thick {
+    //      color: $outline-color-accent;
+    //    }
+    //
+    //    &.mat-warn .mat-form-field-outline-thick {
+    //      color: $outline-color-warn;
+    //    }
+    //  }
+    //
+    //  // Class repeated so that rule is specific enough to override focused accent color case.
+    //  &.mat-form-field-invalid.mat-form-field-invalid {
+    //    .mat-form-field-outline-thick {
+    //      color: $outline-color-warn;
+    //    }
+    //  }
+    //
+    //  &.mat-form-field-disabled {
+    //    .mat-form-field-label {
+    //      color: $label-disabled-color;
+    //    }
+    //
+    //    .mat-form-field-outline {
+    //      color: $outline-color-disabled;
+    //    }
+    //  }
     }
   }
 }
 
 @mixin im-form-field-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  //$line-height: mat-line-height($config, input);
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
   // The padding above and below the infix.
   $infix-padding: .5em;
   // The margin applied to the form-field-infix to reserve space for the floating label.
-  $infix-margin-top: 1em * $line-height * $subscript-font-scale;
+  //$infix-margin-top: 1em * $line-height * $subscript-font-scale;
   // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
@@ -96,7 +94,7 @@
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
   // need to multiply by the subscript font scale factor since the wrapper has a larger font size.
-  $wrapper-padding-bottom: ($subscript-margin-top + $line-height) * $subscript-font-scale;
+  //$wrapper-padding-bottom: ($subscript-margin-top + $line-height) * $subscript-font-scale;
   // The amount we offset the label from the input text in the outline appearance.
   $outline-appearance-label-offset: -0.25em;
 
@@ -114,10 +112,10 @@
       padding: $infix-padding 0 0 0;
     }
 
-    .mat-form-field-label {
-      top: $infix-margin-top + $infix-padding;
-      margin-top: $outline-appearance-label-offset;
-    }
+    //.mat-form-field-label {
+    //  top: $infix-margin-top + $infix-padding;
+    //  margin-top: $outline-appearance-label-offset;
+    //}
 
     &.mat-form-field-can-float {
       &.mat-form-field-should-float .mat-form-field-label,
@@ -129,12 +127,12 @@
 
       // Server-side rendered matInput with a label attribute but label not shown
       // (used as a pure CSS stand-in for mat-form-field-should-float).
-      .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-      .mat-form-field-label {
-        @include _mat-form-field-outline-label-floating(
-                        $subscript-font-scale, $infix-padding + $outline-appearance-label-offset,
-                        $infix-margin-top);
-      }
+      //.mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
+      //.mat-form-field-label {
+      //  @include _mat-form-field-outline-label-floating(
+      //                  $subscript-font-scale, $infix-padding + $outline-appearance-label-offset,
+      //                  $infix-margin-top);
+      //}
     }
   }
 }

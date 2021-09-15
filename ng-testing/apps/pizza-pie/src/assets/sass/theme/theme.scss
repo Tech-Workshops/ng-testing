@@ -1,0 +1,98 @@
+//@import '~@angular/material/theming';
+//@import "palette";
+//@import "typeography";
+//
+//$typography-config: im-typography-config();
+//@include mat-core($typography-config);
+//
+//@import "../material-overrides/button";
+//@import "../material-overrides/checkbox";
+//@import "../material-overrides/radiobutton";
+//@import "../material-overrides/select";
+//@import "../material-overrides/select";
+//@import "../material-overrides/table";
+//@import "../material-overrides/form-field";
+//@import "../material-overrides/card";
+//
+//// Define the palettes for your theme using the Material Design palettes available in palette.scss
+//// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+//// hue.
+//$im-palette-default: 600;
+//$im-palette-lighter: 100;
+//$im-palette-darker: 800;
+//$im-palette-text-default: 600;
+//
+//$pizza-pie-app-primary: mat-palette($im-palette-blue, $im-palette-default, $im-palette-lighter, $im-palette-darker, $im-palette-text-default);
+//$pizza-pie-app-accent:  mat-palette($im-palette-grey, $im-palette-default, $im-palette-lighter, $im-palette-darker, $im-palette-text-default);
+//$pizza-pie-app-warn:    mat-palette($mat-deep-orange);
+//
+//@function im-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+//  $im-light-theme-foreground: (
+//          base:              black,
+//          divider:           $dark-dividers,
+//          dividers:          $dark-dividers,
+//          disabled:          $dark-disabled-text,
+//          disabled-button:   rgba(black, 0.26),
+//          disabled-text:     $dark-disabled-text,
+//          elevation:         black,
+//          hint-text:         $dark-disabled-text,
+//          secondary-text:    $dark-secondary-text,
+//          icon:              rgba(black, 0.54),
+//          icons:             rgba(black, 0.54),
+//          text:              map_get($im-palette-grey, 600),
+//          slider-min:        rgba(black, 0.87),
+//          slider-off:        rgba(black, 0.26),
+//          slider-off-active: rgba(black, 0.38),
+//  );
+//
+//  $im-light-theme-background: (
+//          status-bar: map_get($im-palette-grey, 200),
+//          app-bar:    map_get($im-palette-grey, 100),
+//          background: map_get($im-palette-grey, 50),
+//          hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+//          card:       white,
+//          dialog:     white,
+//          disabled-button: rgba(black, 0.12),
+//          raised-button: white,
+//          focused-button: $dark-focused,
+//          selected-button: map_get($im-palette-grey, 300),
+//          selected-disabled-button: map_get($im-palette-grey, 400),
+//          disabled-button-toggle: map_get($im-palette-grey, 200),
+//          unselected-chip: map_get($im-palette-grey, 300),
+//          disabled-list-option: map_get($im-palette-grey, 200),
+//  );
+//
+//  @return (
+//    primary: $primary,
+//    accent: $accent,
+//    warn: $warn,
+//    is-dark: false,
+//    foreground: $im-light-theme-foreground,
+//    background: $im-light-theme-background,
+//  );
+//}
+//
+//@mixin pizza-pie-app-theme-creator($theme) {
+//  // Include theme styles for core and each component used in your app.
+//  // Alternatively, you can import and @include the theme mixins for each component
+//  // that you are using.
+//  @include angular-material-theme($theme);
+//
+//  // Custom components for this app
+//  @include button-alterations($theme);
+//  @include checkbox-alterations($theme);
+//  @include select-alterations($theme);
+//  @include table-alterations($theme);
+//  @include form-field-alterations($theme);
+//}
+//
+//@mixin pizza-pie-app-typography($config) {
+//  @include im-table-typography($config);
+//  @include im-form-field-typography($config);
+//}
+//
+//// Create the theme object (a Sass map containing all of the palettes).
+//$pizza-pie-app-theme: im-theme($pizza-pie-app-primary, $pizza-pie-app-accent, $pizza-pie-app-warn);
+//@include pizza-pie-app-theme-creator($pizza-pie-app-theme);
+//
+//@include pizza-pie-app-typography($typography-config);

@@ -8,7 +8,7 @@ import { PizzaOrder } from '../../shared/models/pizza-order.model';
   styleUrls: ['./delivered-orders-item.component.scss']
 })
 export class DeliveredOrdersItemComponent {
-  @Input() order!: PizzaOrder;
+  @Input() order: PizzaOrder;
 
   constructor(private pizzaLogisticsService: PizzaLogisticsService) { }
 

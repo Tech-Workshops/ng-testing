@@ -67,17 +67,17 @@ $im-row-height: 36px;
     .mat-row {
       border-top: solid 1px transparent;
 
-      &:hover {
-        background-color: mat-color($primary, 100);
-        border-bottom-color: $border-color;
-        font-weight: bold;
-      }
-
-      &:active {
-        background-color: mat-color($primary, 200);
-        border-bottom-color: $border-color;
-        font-weight: bold;
-      }
+      //&:hover {
+      //  background-color: mat-color($primary, 100);
+      //  border-bottom-color: $border-color;
+      //  font-weight: bold;
+      //}
+      //
+      //&:active {
+      //  background-color: mat-color($primary, 200);
+      //  border-bottom-color: $border-color;
+      //  font-weight: bold;
+      //}
     }
 
     mat-row, mat-header-row, mat-footer-row,
