@@ -14,7 +14,7 @@ export class ReadyForDeliveryItemComponent implements OnInit {
   @Input() order: PizzaOrder;
   @Input() availableDrivers$: Observable<Driver[]>;
 
-  public formGroup!: FormGroup;
+  public formGroup: FormGroup;
   private formBuilder = new FormBuilder();
 
   constructor(private pizzaLogisticsService: PizzaLogisticsService) { }
