@@ -1,4 +1,4 @@
-$im-palette-blue: (
+$pizza-pie-palette-blue: (
         50 : #f6fafc,
         //Lighter
         100 : #edf4fa,
@@ -43,7 +43,7 @@ $im-palette-blue: (
         )
 );
 
-$im-palette-grey: (
+$pizza-pie-palette-grey: (
         50 : #fafafa, //background
 
         //Lighter
@@ -89,11 +89,11 @@ $im-palette-grey: (
         )
 );
 
-$im-theme-background: (
-        button: map_get($im-palette-blue, 600),
-        focused-button: map_get($im-palette-blue, 300),
-        selected-button: map_get($im-palette-blue, 400)
+$pizza-pie-theme-background: (
+        button: map_get($pizza-pie-palette-blue, 600),
+        focused-button: map_get($pizza-pie-palette-blue, 300),
+        selected-button: map_get($pizza-pie-palette-blue, 400)
 );
 
-$im-theme-foreground: (
+$pizza-pie-theme-foreground: (
 );

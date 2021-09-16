@@ -1,5 +1,5 @@
-$im-header-row-height: 40px;
-$im-row-height: 36px;
+$pizza-pie-header-row-height: 40px;
+$pizza-pie-row-height: 36px;
 
 .pizza-pie-app {
   mat-cell, mat-footer-cell, mat-header-cell {
@@ -18,25 +18,25 @@ $im-row-height: 36px;
   }
 
   mat-header-row {
-    min-height: $im-header-row-height;
+    min-height: $pizza-pie-header-row-height;
   }
 
   mat-row, mat-footer-row {
-    min-height: $im-row-height;
+    min-height: $pizza-pie-row-height;
   }
 
   tr.mat-header-row {
-    height: $im-header-row-height;
+    height: $pizza-pie-header-row-height;
   }
 
   tr.mat-row, tr.mat-footer-row {
-    height: $im-row-height;
+    height: $pizza-pie-row-height;
   }
 }
 
 
 
-@mixin im-table-typography($config) {
+@mixin pizza-pie-table-typography($config) {
   $font-family-condensed: map-get($config, font-family-condensed);
   $font-family-condensed: if(type-of($font-family-condensed) == string, unquote($font-family-condensed), $font-family-condensed);
 

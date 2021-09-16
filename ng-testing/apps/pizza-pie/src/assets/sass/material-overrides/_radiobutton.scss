@@ -1,18 +1,18 @@
-$im-radio-size: 20px;
+$pizza-pie-radio-size: 20px;
 
 // We use .pizza-pie-app class to override the default angular styling
 .pizza-pie-app {
 
   // Container for radio circles and ripple.
   .mat-radio-container {
-    width: $im-radio-size;
-    height: $im-radio-size;
+    width: $pizza-pie-radio-size;
+    height: $pizza-pie-radio-size;
   }
 
   // The outer circle for the radio, always present.
   .mat-radio-outer-circle {
-    height: $im-radio-size;
-    width: $im-radio-size;
+    height: $pizza-pie-radio-size;
+    width: $pizza-pie-radio-size;
     border: {
       width: 1px;
     }
@@ -20,8 +20,8 @@ $im-radio-size: 20px;
 
   // The inner circle for the radio, shown when checked.
   .mat-radio-inner-circle {
-    height: $im-radio-size;
-    width: $im-radio-size;
+    height: $pizza-pie-radio-size;
+    width: $pizza-pie-radio-size;
 
 
   }

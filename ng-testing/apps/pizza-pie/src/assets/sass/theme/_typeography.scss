@@ -1,18 +1,18 @@
-$im-font-family:'Roboto, "Helvetica Neue", sans-serif';
-$im-condensed-font-family:'Roboto Condensed, "Helvetica Neue", sans-serif';
+$pizza-pie-font-family:'Roboto, "Helvetica Neue", sans-serif';
+$pizza-pie-condensed-font-family:'Roboto Condensed, "Helvetica Neue", sans-serif';
 
-@function im-typography-config(
-  $font-family:   $im-font-family,
-  $font-family-condensed: $im-condensed-font-family,
+@function pizza-pie-typography-config(
+  $font-family:   $pizza-pie-font-family,
+  $font-family-condensed: $pizza-pie-condensed-font-family,
   $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
   $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
   $display-2:     mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
   $display-1:     mat-typography-level(34px, 40px, 400),
 
-  $headline:      mat-typography-level(24px, 32px, 400, $font-family: $im-condensed-font-family), //h1
-  $title:         mat-typography-level(20px, 32px, 500, $font-family: $im-condensed-font-family), //h2
-  $subheading-2:  mat-typography-level(16px, 28px, 400, $font-family: $im-condensed-font-family), //h4
-  $subheading-1:  mat-typography-level(15px, 24px, 400, $font-family: $im-condensed-font-family), //h3
+  $headline:      mat-typography-level(24px, 32px, 400, $font-family: $pizza-pie-condensed-font-family), //h1
+  $title:         mat-typography-level(20px, 32px, 500, $font-family: $pizza-pie-condensed-font-family), //h2
+  $subheading-2:  mat-typography-level(16px, 28px, 400, $font-family: $pizza-pie-condensed-font-family), //h4
+  $subheading-1:  mat-typography-level(15px, 24px, 400, $font-family: $pizza-pie-condensed-font-family), //h3
 
   $body-2:        mat-typography-level(14px, 24px, 500),
   $body-1:        mat-typography-level(14px, 20px, 400),

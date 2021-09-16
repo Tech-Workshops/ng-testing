@@ -1,12 +1,12 @@
-$im-button-height: 35px;
-$im-button-horizontal-padding: 25px;
+$pizza-pie-button-height: 35px;
+$pizza-pie-button-horizontal-padding: 25px;
 $mat-button-border-radius: 20px !default;
 
 // We use .pizza-pie-app class to override the default angular styling
 .pizza-pie-app {
   .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
-    height: $im-button-height;
-    padding: 0 $im-button-horizontal-padding 0 $im-button-horizontal-padding;
+    height: $pizza-pie-button-height;
+    padding: 0 $pizza-pie-button-horizontal-padding 0 $pizza-pie-button-horizontal-padding;
   }
 
   .mat-button {
