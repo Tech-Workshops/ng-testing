@@ -24,20 +24,20 @@ $pizza-pie-palette-darker: 800;
 $pizza-pie-palette-text-default: 600;
 
 $pizza-pie-app-primary: mat.define-palette($pizza-pie-palette-blue, $pizza-pie-palette-default, $pizza-pie-palette-lighter, $pizza-pie-palette-darker, $pizza-pie-palette-text-default);
-$pizza-pie-app-accent:  mat.define-palette(($pizza-pie-palette-grey, $pizza-pie-palette-default, $pizza-pie-palette-lighter, $pizza-pie-palette-darker, $pizza-pie-palette-text-default));
+$pizza-pie-app-accent:  mat.define-palette($pizza-pie-palette-grey, $pizza-pie-palette-default, $pizza-pie-palette-lighter, $pizza-pie-palette-darker, $pizza-pie-palette-text-default);
 $pizza-pie-app-warn:    mat.define-palette((mat.$orange-palette));
 
 @function pizza-pie-theme($primary, $accent, $warn: mat.define-palette(mat.$red-palette)) {
   $pizza-pie-light-theme-foreground: (
           base:              black,
-          divider:           mat.$dark-dividers,
-          dividers:          mat.$dark-dividers,
-          disabled:          mat.$dark-disabled-text,
+          divider:           $dark-dividers,
+          dividers:          $dark-dividers,
+          disabled:          $dark-disabled-text,
           disabled-button:   rgba(black, 0.26),
-          disabled-text:     mat.$dark-disabled-text,
+          disabled-text:     $dark-disabled-text,
           elevation:         black,
-          hint-text:         mat.$dark-disabled-text,
-          secondary-text:    mat.$dark-secondary-text,
+          hint-text:         $dark-disabled-text,
+          secondary-text:    $dark-secondary-text,
           icon:              rgba(black, 0.54),
           icons:             rgba(black, 0.54),
           text:              map_get($pizza-pie-palette-grey, 600),
@@ -55,7 +55,7 @@ $pizza-pie-app-warn:    mat.define-palette((mat.$orange-palette));
           dialog:     white,
           disabled-button: rgba(black, 0.12),
           raised-button: white,
-          focused-button: mat.$dark-focused,
+          focused-button: $dark-focused,
           selected-button: map_get($pizza-pie-palette-grey, 300),
           selected-disabled-button: map_get($pizza-pie-palette-grey, 400),
           disabled-button-toggle: map_get($pizza-pie-palette-grey, 200),

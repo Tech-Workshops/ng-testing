@@ -1,10 +1,18 @@
-
+@use 'sass:math';
 
 // We use .pizza-pie-app class to override the default angular styling
 .pizza-pie-app {
   justify-content: space-around;
 }
 
+// Applies a floating label above the form field control iteself
+@mixin _label_floating($font-scale, $infix-padding, $infix-margin-top) {
+  transform: translateY(-$infix-margin-top - $infix-padding + $dedupe)
+              scale($font-scale);
+  width: math.div(100%, $font-scale) + $dedupe;
+
+  $dedupe: $dedupe + 0.00001 !global;
+}
 
 @mixin form-field-alterations($theme) {
   $primary: map-get($theme, primary);
@@ -79,18 +87,18 @@
 
 @mixin pizza-pie-form-field-typography($config) {
   // The unit-less line-height from the font config.
-  //$line-height: mat-line-height($config, input);
+  $line-height: mat-line-height($config, input);
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
   // The padding above and below the infix.
   $infix-padding: .5em;
   // The margin applied to the form-field-infix to reserve space for the floating label.
-  //$infix-margin-top: 1em * $line-height * $subscript-font-scale;
+  $infix-margin-top: 1em * $line-height * $subscript-font-scale;
   // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
-  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale);
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
   // need to multiply by the subscript font scale factor since the wrapper has a larger font size.
@@ -120,7 +128,7 @@
     &.mat-form-field-can-float {
       &.mat-form-field-should-float .mat-form-field-label,
       .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-        @include _mat-form-field-outline-label-floating(
+        @include _label-floating(
                         $subscript-font-scale, $infix-padding + $outline-appearance-label-offset,
                         $infix-margin-top);
       }

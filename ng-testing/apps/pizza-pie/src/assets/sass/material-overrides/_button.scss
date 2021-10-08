@@ -21,9 +21,9 @@ $mat-button-border-radius: 20px !default;
 @mixin button-theme-alteration($theme, $palette-name) {
   $palette: map-get($theme, $palette-name);
 
-  //$default-color: mat-color($palette, default);
-  //$hover-color: mat-color($palette, 500);
-  //$active-color: mat-color($palette, 700);
+  $default-color: mat-color($palette, default);
+  $hover-color: mat-color($palette, 500);
+  $active-color: mat-color($palette, 700);
 
 
     .mat-#{$palette-name} {
@@ -69,7 +69,7 @@ $mat-button-border-radius: 20px !default;
     @include button-theme-alteration($theme, 'accent');
 
     .mat-button:not([disabled]) {
-      color: rgba($primary, A100);
+      color: mat-color($primary, A100);
 
       //&:hover {
       //  color: $hover-color;
